@@ -34,9 +34,9 @@ const Signup = () => {
   return (
     <div className="signup-container">
       <h2>Signup</h2>
-      {error && <p style={{ color: 'red' }}>{error}</p>}
+      {error && <p style={{ background: 'red' }}>{error}</p>}
       <form onSubmit={handleSubmit}>
-        <div>
+        <div> 
           <label>Username:</label>
           <input
             type="text"
