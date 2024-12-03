@@ -1,11 +1,15 @@
 // eslint-disable-next-line no-unused-vars
 import React, {useState} from 'react';
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 const Login = ()=>{
         const [formData, setFormData] = useState({
           email: '',
           password: ''
         });
+        const navigate = useNavigate()
          console.log("formData",formData)
          console.log("setFormData",setFormData)
         const [error] = useState(''); 
@@ -27,6 +31,7 @@ const Login = ()=>{
             const data = response;
             if(response.statusText){
               console.log("login sucessfully:",data)
+              navigate('/dashboard')
             }
             } catch (error) {
              console.log(error.message)
@@ -58,8 +63,17 @@ const Login = ()=>{
               required
             />
           </div>
-          <button type="submit" className="button-class">Login</button>
+          <button type="submit" className="button-class">Login</button>         
         </form>
+        <p className="text-center text-gray-600 mt-4">
+        Don't have an account?{' '}
+        <span
+          onClick={() => navigate('/signup')}
+          className="text-blue-500 hover:underline cursor-pointer"
+        >
+          Sign up
+        </span>
+      </p>
       </div>
       )
 }
