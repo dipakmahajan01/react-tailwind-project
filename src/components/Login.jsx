@@ -66,7 +66,7 @@ const Login = ()=>{
           <button type="submit" className="button-class">Login</button>         
         </form>
         <p className="text-center text-gray-600 mt-4">
-        Don't have an account?{' '}
+        Don&apos;t have an account?{' '}
         <span
           onClick={() => navigate('/signup')}
           className="text-blue-500 hover:underline cursor-pointer"
