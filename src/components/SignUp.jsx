@@ -44,6 +44,7 @@ const Signup = () => {
           <label>Username:</label>
           <input
             type='text'
+            className='border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 p-2'
             name='username'
             value={formData.username}
             onChange={handleChange}
@@ -54,7 +55,9 @@ const Signup = () => {
           <label>Email:</label>
           <input
             type='email'
+              className='border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 p-2'
             name='email'
+            
             value={formData.email}
             onChange={handleChange}
             required
@@ -64,6 +67,7 @@ const Signup = () => {
           <label>Password:</label>
           <input
             type='password'
+              className='border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 p-2'
             name='password'
             value={formData.password}
             onChange={handleChange}
@@ -75,12 +79,13 @@ const Signup = () => {
           <input
             type='password'
             name='confirmPassword'
+              className='border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 p-2'
             value={formData.confirmPassword}
             onChange={handleChange}
             required
           />
         </div>
-        <button type='submit'>Signup</button>
+        <button type='submit'  className='button-class border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 p-2'>Signup</button>
       </form>
         
       </div>

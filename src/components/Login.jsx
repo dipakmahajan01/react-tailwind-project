@@ -52,11 +52,13 @@ const Login = () => {
           <div>
             <label
               htmlFor='email'
-              className='block text-sm/6 font-medium text-gray-900'>
+              className='block text-sm/6 font-medium text-gray-900'
+            >
               Email:
             </label>
             <input
               type='email'
+              className='button-class border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 p-2 border-black-300'
               name='email'
               value={formData.email}
               onChange={handleChange}
@@ -69,14 +71,17 @@ const Login = () => {
             </label>
             <input
               type='password'
+              className='button-class border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 p-2 border-black-300'
               name='password'
-              className='border-black-300'
               value={formData.password}
               onChange={handleChange}
               required
             />
           </div>
-          <button type='submit'  className='button-class'>
+          <button
+            type='submit'
+            className='button-class border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 p-2'
+          >
             Login
           </button>
         </form>
