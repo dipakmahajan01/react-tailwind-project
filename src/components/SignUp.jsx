@@ -9,7 +9,7 @@ const Signup = () => {
     confirmPassword: '',
   });
 
-  const [error, setError] = useState('');
+  const [ setError] = useState('');
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -23,24 +23,28 @@ const Signup = () => {
     e.preventDefault();
 
     if (formData.password !== formData.confirmPassword) {
-      setError("Passwords do not match.");
+      setError('Passwords do not match.');
       return;
     }
 
     // Call API or handle signup logic here
-    console.log("User data submitted:", formData);
+    console.log('User data submitted:', formData);
   };
 
   return (
-    <div className="signup-container">
-      <h2>Signup</h2>
-      {error && <p style={{ background: 'red' }}>{error}</p>}
+    <div className='flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8'>
+      <div className='sm:mx-auto sm:w-full sm:max-w-sm'>
+        <h2 className='mt-10 text-center text-2xl/9 font-bold tracking-tight text-gray-900'>
+          Sing up
+        </h2>
+      </div>
+      <div className='mt-10 sm:mx-auto'>
       <form onSubmit={handleSubmit}>
-        <div> 
+        <div>
           <label>Username:</label>
           <input
-            type="text"
-            name="username"
+            type='text'
+            name='username'
             value={formData.username}
             onChange={handleChange}
             required
@@ -49,8 +53,8 @@ const Signup = () => {
         <div>
           <label>Email:</label>
           <input
-            type="email"
-            name="email"
+            type='email'
+            name='email'
             value={formData.email}
             onChange={handleChange}
             required
@@ -59,8 +63,8 @@ const Signup = () => {
         <div>
           <label>Password:</label>
           <input
-            type="password"
-            name="password"
+            type='password'
+            name='password'
             value={formData.password}
             onChange={handleChange}
             required
@@ -69,17 +73,19 @@ const Signup = () => {
         <div>
           <label>Confirm Password:</label>
           <input
-            type="password"
-            name="confirmPassword"
+            type='password'
+            name='confirmPassword'
             value={formData.confirmPassword}
             onChange={handleChange}
             required
           />
         </div>
-        <button type="submit">Signup</button>
+        <button type='submit'>Signup</button>
       </form>
+        
+      </div>
     </div>
   );
-};
+};                                      
 
 export default Signup;

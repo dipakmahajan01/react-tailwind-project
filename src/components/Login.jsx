@@ -1,81 +1,97 @@
 // eslint-disable-next-line no-unused-vars
-import React, {useState} from 'react';
-import axios from 'axios'
+import React, { useState } from 'react';
+import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 // import { Link } from 'react-router-dom';
 // import { Link } from 'react-router-dom';
-const Login = ()=>{
-        const [formData, setFormData] = useState({
-          email: '',
-          password: ''
-        });
-        const navigate = useNavigate()
-         console.log("formData",formData)
-         console.log("setFormData",setFormData)
-        const [error] = useState(''); 
-        const handleChange = (e) => {
-            const { name, value } = e.target;
-            setFormData({
-              ...formData,
-              [name]: value,
-            });
-          };
+const Login = () => {
+  const [formData, setFormData] = useState({
+    email: '',
+    password: '',
+  });
+  const navigate = useNavigate();
+  console.log('formData', formData);
+  console.log('setFormData', setFormData);
+  // const [error] = useState('');
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
 
-          const handleSubmit = async(e)=>{
-            e.preventDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-            try {
-              const response =  await axios.post('https://ecom-be.buzz/api/auth/login',formData
-            )
-            console.log("response:",response)
-            const data = response;
-            if(response.statusText){
-              console.log("login sucessfully:",data)
-              navigate('/dashboard')
-            }
-            } catch (error) {
-             console.log(error.message)
-            }
-            console.log("User data submitted:", formData);
-          }
-      return (
-        <div className="login-container">
-        <h2 className="text-2xl font-semibold text-center text-gray-800 mb-6">login</h2>
-        {error && <p style={{ color: 'red' }}>{error}</p>}
-        <form onSubmit={handleSubmit} className="space-y-4">
+    try {
+      const response = await axios.post(
+        'https://ecom-be.buzz/api/auth/login',
+        formData
+      );
+      console.log('response:', response);
+      const data = response;
+      if (response.statusText) {
+        console.log('login sucessfully:', data);
+        navigate('/dashboard');
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
+    console.log('User data submitted:', formData);
+  };
+  return (
+    <div className='flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8'>
+      <div className='sm:mx-auto sm:w-full sm:max-w-sm'>
+        <h2 className='mt-10 text-center text-2xl/9 font-bold tracking-tight text-gray-900'>
+          Sign in to your account
+        </h2>
+      </div>
+      <div className='mt-10 sm:mx-auto'>
+        <form onSubmit={handleSubmit} className='space-y-4'>
           <div>
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email:</label>
+            <label
+              htmlFor='email'
+              className='block text-sm/6 font-medium text-gray-900'>
+              Email:
+            </label>
             <input
-              type="email"
-              name="email"
+              type='email'
+              name='email'
               value={formData.email}
               onChange={handleChange}
               required
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700">Password:</label>
+            <label className='block text-sm/6 font-medium text-gray-900'>
+              Password:
+            </label>
             <input
-              type="password"
-              name="password"
+              type='password'
+              name='password'
+              className='border-black-300'
               value={formData.password}
               onChange={handleChange}
               required
             />
           </div>
-          <button type="submit" className="button-class">Login</button>         
+          <button type='submit'  className='button-class'>
+            Login
+          </button>
         </form>
-        <p className="text-center text-gray-600 mt-4">
+      </div>
+      <p className='text-center text-gray-600 mt-4'>
         Don&apos;t have an account?{' '}
         <span
           onClick={() => navigate('/signup')}
-          className="text-blue-500 hover:underline cursor-pointer"
+          className='text-blue-500 hover:underline cursor-pointer'
         >
           Sign up
         </span>
       </p>
-      </div>
-      )
-}
+    </div>
+  );
+};
 
 export default Login;
